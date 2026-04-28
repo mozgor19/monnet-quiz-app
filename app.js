@@ -368,9 +368,9 @@
     });
   }
 
-  async function downloadResultCard() {
+  async function drawResultCard() {
     const result = state.result;
-    if (!result) return;
+    if (!result) return false;
 
     const ctx = canvas.getContext("2d");
     const width = canvas.width;
@@ -411,48 +411,104 @@
     }
     ctx.restore();
 
-    const shade = ctx.createLinearGradient(62, 490, 62, 750);
-    shade.addColorStop(0, "rgba(0,0,0,0)");
-    shade.addColorStop(1, "rgba(0,0,0,0.45)");
-    ctx.fillStyle = shade;
-    drawRoundedRect(ctx, 62, 62, 956, 688, 34);
-    ctx.fill();
-
-    ctx.fillStyle = "#fffaf2";
-    ctx.font = "800 34px system-ui, sans-serif";
-    ctx.fillText("Hangi Monet tablosusun?", 104, 680);
-
     ctx.fillStyle = "#25221f";
     ctx.font = "800 34px system-ui, sans-serif";
-    ctx.fillText("Senin Monet tablon", 72, 830);
+    ctx.fillText("Hangi Monet tablosusun?", 72, 820);
 
-    ctx.font = "700 72px Georgia, serif";
-    const titleY = wrapText(ctx, result.title, 72, 900, 936, 78, 2);
+    ctx.fillStyle = "#6a6258";
+    ctx.font = "800 26px system-ui, sans-serif";
+    ctx.fillText("Senin Monet tablon", 72, 860);
+
+    ctx.font = "700 64px Georgia, serif";
+    const titleY = wrapText(ctx, result.title, 72, 920, 936, 70, 2);
 
     ctx.fillStyle = "#6a6258";
     ctx.font = "800 28px system-ui, sans-serif";
-    ctx.fillText(`Claude Monet · ${result.year}`, 72, titleY + 10);
+    ctx.fillText(`Claude Monet · ${result.year}`, 72, titleY + 8);
 
     ctx.fillStyle = "#3d3934";
-    ctx.font = "500 30px system-ui, sans-serif";
-    wrapText(ctx, buildResultDescription(result), 72, titleY + 66, 936, 41, 6);
+    ctx.font = "500 27px system-ui, sans-serif";
+    wrapText(ctx, buildResultDescription(result), 72, titleY + 58, 936, 36, 4);
 
     ctx.fillStyle = "#6a6258";
     ctx.font = "700 23px system-ui, sans-serif";
     ctx.fillText(`created by ${creator}`, 72, 1314);
 
-    const link = document.createElement("a");
+    return true;
+  }
+
+  function getResultFilename(result) {
     const safeTitle = result.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-    link.download = `hangi-monet-tablosusun-${safeTitle}.png`;
+    return `hangi-monet-tablosusun-${safeTitle}.png`;
+  }
+
+  function canvasToBlob() {
+    return new Promise((resolve, reject) => {
+      try {
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error("Result card could not be created"));
+          }
+        }, "image/png");
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  async function createResultCardFile() {
+    const result = state.result;
+    if (!result) return null;
+    const drawn = await drawResultCard();
+    if (!drawn) return null;
+    const blob = await canvasToBlob();
+    return new File([blob], getResultFilename(result), { type: "image/png" });
+  }
+
+  async function downloadResultCard() {
+    const result = state.result;
+    if (!result) return;
+
+    const drawn = await drawResultCard();
+    if (!drawn) return;
+
+    const link = document.createElement("a");
+    link.download = getResultFilename(result);
     link.href = canvas.toDataURL("image/png");
     link.click();
   }
 
-  function tweetResult() {
+  async function tweetResult() {
     if (!state.result) return;
     const url = new URL(window.location.href);
     url.searchParams.set("result", state.result.id);
     const text = `Ben "${state.result.title}" çıktım. Sen hangi Monet tablosusun? ${creator}`;
+
+    try {
+      if (!navigator.share) throw new Error("Native share is not supported");
+
+      const file = await createResultCardFile();
+      const shareData = {
+        files: file ? [file] : [],
+        text,
+        url: url.toString()
+      };
+
+      const canShareFile =
+        file &&
+        navigator.share &&
+        (!navigator.canShare || navigator.canShare({ files: [file] }));
+
+      if (canShareFile) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") return;
+    }
+
     const intent = new URL("https://twitter.com/intent/tweet");
     intent.searchParams.set("text", text);
     intent.searchParams.set("url", url.toString());
