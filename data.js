@@ -18,7 +18,7 @@ window.MONET_QUIZ_DATA = {
       options: [
         {
           title: "Su kenarında yürümek.",
-          note: "Telefon sessizde, tempo yavaş.",
+          note: "Telefonu sessize alıp yavaş bir tempoyla.",
           scores: { water: 3, mystery: 1, intimacy: 1 }
         },
         {
@@ -75,7 +75,7 @@ window.MONET_QUIZ_DATA = {
         },
         {
           title: "Bir iki kişiyle uzun konuşurum.",
-          note: "Herkese yetişmek bana göre değil.",
+          note: "Herkese yetebilmek bana göre değil.",
           scores: { intimacy: 3, water: 1, mystery: 1 }
         },
         {
@@ -148,7 +148,7 @@ window.MONET_QUIZ_DATA = {
       options: [
         {
           title: "Uzun bir yürüyüş.",
-          note: "Kafa yürürken biraz toparlanır.",
+          note: "Kafamı yürürken toplarım.",
           scores: { motion: 2, water: 1, winter: 1 }
         },
         {
@@ -158,7 +158,7 @@ window.MONET_QUIZ_DATA = {
         },
         {
           title: "Arkadaşlarla buluşmak.",
-          note: "Konu değişsin, yüzüm açılsın.",
+          note: "Dost muhabbeti gibisi yok.",
           scores: { social: 3, sun: 1, city: 1 }
         },
         {
@@ -179,7 +179,7 @@ window.MONET_QUIZ_DATA = {
         },
         {
           title: "Büyük bir şehre.",
-          note: "Müze, sokak, kafe, biraz kaybolma.",
+          note: "Müze, sokak, kafe, sokaklarda kaybolmak.",
           scores: { city: 3, social: 1, motion: 1 }
         },
         {
@@ -189,7 +189,7 @@ window.MONET_QUIZ_DATA = {
         },
         {
           title: "Rüzgarlı, kayalık bir kıyıya.",
-          note: "Deniz biraz sert olsun.",
+          note: "Hırçın dalgaları izlemek iyi geliyor.",
           scores: { water: 2, drama: 3, motion: 1, winter: 1 }
         }
       ]
@@ -252,16 +252,16 @@ window.MONET_QUIZ_DATA = {
       options: [
         {
           title: "Biraz dinginlik istiyorum.",
-          note: "Kafamın sesi azalsın.",
+          note: "Kafamın içi biraz soluklanmalı.",
           scores: { water: 2, intimacy: 2, mystery: 1 }
         },
         {
           title: "Biraz hareket istiyorum.",
-          note: "Yer değiştirince ben de değişirim.",
+          note: "Tebdil-i mekanda ferahlık vardır.",
           scores: { motion: 3, city: 1, social: 1 }
         },
         {
-          title: "Biraz güzellik toparlasın istiyorum.",
+          title: "Biraz güzel şeyler görmeye ihtiyacım var.",
           note: "Küçük bir şey bile yeter.",
           scores: { garden: 2, sun: 2, intimacy: 1 }
         },
