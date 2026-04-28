@@ -346,8 +346,6 @@
     ctx.fillStyle = "#fffaf2";
     ctx.font = "800 34px system-ui, sans-serif";
     ctx.fillText("Hangi Monet tablosusun?", 104, 680);
-    ctx.font = "700 26px system-ui, sans-serif";
-    ctx.fillText(creator, 104, 718);
 
     ctx.fillStyle = "#25221f";
     ctx.font = "800 34px system-ui, sans-serif";
@@ -370,12 +368,9 @@
     ctx.font = "500 29px system-ui, sans-serif";
     wrapText(ctx, result.astro, 72, 1252, 780, 38, 2);
 
-    ctx.fillStyle = "#25221f";
-    ctx.font = "850 28px system-ui, sans-serif";
-    ctx.fillText("@mozgor19", 72, 1312);
-    ctx.textAlign = "right";
-    ctx.fillText("monet testi", 1008, 1312);
-    ctx.textAlign = "left";
+    ctx.fillStyle = "#6a6258";
+    ctx.font = "700 23px system-ui, sans-serif";
+    ctx.fillText(`created by ${creator}`, 72, 1314);
 
     const link = document.createElement("a");
     const safeTitle = result.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");

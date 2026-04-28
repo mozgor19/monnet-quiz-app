@@ -48,7 +48,7 @@ const jitter = (hashString(`${answerKey}:${painting.id}`) % 1000) / 10000;
 
 Bu değer rastgele değil; aynı cevapları veren kişi aynı sonucu alır. Ama birbirine çok yakın skor alan tablolar arasında bağ bozucu gibi çalışır. Böylece sonuçlar tek bir popüler tabloya yığılmaz.
 
-Örnek dağılım kontrolünde 5.000 farklı cevap kombinasyonu simüle edildi ve 72 sonucun tamamı en az bir kez üretildi.
+Örnek dağılım kontrollerinde sonuçların geniş bir alana yayıldığı ve tek bir popüler tabloya yığılmadığı görüldü.
 
 ## Görseller
 

@@ -13,262 +13,262 @@ window.MONET_QUIZ_DATA = {
   ],
   questions: [
     {
-      eyebrow: "Işık testi",
-      title: "Bir odaya girdiğinde atmosfer genelde ne yapıyor?",
+      eyebrow: "Boş gün",
+      title: "Hiç planın olmayan bir pazar. Hangisi daha iyi gelir?",
       options: [
         {
-          title: "Perdeler açılıyor gibi oluyor.",
-          note: "Benim işlevim biraz sabah, biraz sahne ışığı.",
-          scores: { sun: 3, social: 1, motion: 1 }
-        },
-        {
-          title: "Herkes biraz daha sessizleşiyor.",
-          note: "Gürültü beni görünce kendine çeki düzen verir.",
-          scores: { mystery: 2, intimacy: 2, water: 1 }
-        },
-        {
-          title: "Planlar değişiyor.",
-          note: "Ben oradaysam sabit fikirler fazla sabit kalamaz.",
-          scores: { motion: 3, city: 1, drama: 1 }
-        },
-        {
-          title: "Kimse anlamıyor ama hava yumuşuyor.",
-          note: "Belli belirsiz bir bahçe etkisi.",
-          scores: { garden: 2, water: 1, intimacy: 2 }
-        }
-      ]
-    },
-    {
-      eyebrow: "Astrolojik kriz",
-      title: "Merkür retrosu senin mesaj kutunda nasıl belirir?",
-      options: [
-        {
-          title: "Eski biri 'naber' yazar, ben de sanat tarihine sığınırım.",
-          note: "Cevap vermek yerine kendimi müze planında bulurum.",
-          scores: { intimacy: 3, mystery: 1, drama: 1 }
-        },
-        {
-          title: "Üç ayrı takvim aynı anda bozulur.",
-          note: "Kaos ama kurumsal.",
-          scores: { city: 2, motion: 2, drama: 1 }
-        },
-        {
-          title: "Ben zaten geç cevap veriyordum.",
-          note: "Gezegenleri suç ortaklığına davet etmem.",
-          scores: { water: 2, winter: 1, mystery: 2 }
-        },
-        {
-          title: "Bir anda her şeyi temizlemek isterim.",
-          note: "Dolap, zihin, kamera rulosu, hepsi.",
-          scores: { garden: 2, sun: 1, winter: 2 }
-        }
-      ]
-    },
-    {
-      eyebrow: "Felsefi pozisyon",
-      title: "Hayatın anlamına en yakın gelen cümle hangisi?",
-      options: [
-        {
-          title: "Aynı yere uzun uzun bakınca yer değişir.",
-          note: "Fenomenoloji ama pencere kenarı versiyonu.",
-          scores: { water: 2, mystery: 2, intimacy: 1 }
-        },
-        {
-          title: "Bir şey bitiyorsa, ışık açısını değiştiriyordur.",
-          note: "Ben biraz varoluşçu, biraz iyimserim.",
-          scores: { sun: 2, drama: 2, motion: 1 }
-        },
-        {
-          title: "Kalabalık da bir manzaradır.",
-          note: "Sosyoloji ile optik arasında yaşıyorum.",
-          scores: { city: 2, social: 3 }
-        },
-        {
-          title: "Güzellik bazen bakım ister.",
-          note: "Sulamak, budamak, beklemek.",
-          scores: { garden: 3, intimacy: 1, water: 1 }
-        }
-      ]
-    },
-    {
-      eyebrow: "Ne alaka departmanı",
-      title: "Bir kapı kolu sana gizlice ne söylüyor?",
-      options: [
-        {
-          title: "Dışarıda hava tam karar değiştirmelik.",
-          note: "Ceket al, ama dramatik al.",
-          scores: { motion: 2, drama: 2, city: 1 }
-        },
-        {
-          title: "Az önce buradan çok zarif biri geçti.",
-          note: "Detaylara takılanlar kulübü.",
-          scores: { intimacy: 2, social: 1, garden: 1, mystery: 1 }
-        },
-        {
-          title: "Ben aslında bir ay evresiyim.",
-          note: "Açıklamıyorum. Hisset.",
-          scores: { mystery: 3, water: 1, winter: 1 }
-        },
-        {
-          title: "Beni cilalayan kişi haklıydı.",
-          note: "Pratiklik de estetik bir rejimdir.",
-          scores: { sun: 1, garden: 2, social: 1 }
-        }
-      ]
-    },
-    {
-      eyebrow: "Sanat akımı",
-      title: "2026 ruh halin hangi güncel akıma yakın?",
-      options: [
-        {
-          title: "Dopamine decor ama içten içe dingin.",
-          note: "Renk var, kavga yok.",
-          scores: { sun: 2, garden: 2, social: 1 }
-        },
-        {
-          title: "Quiet luxury değil, quiet longing.",
-          note: "Az konuşup çok hissettiren şeyler.",
-          scores: { intimacy: 3, mystery: 1, water: 1 }
-        },
-        {
-          title: "Post-internet yorgunluğu, analog kaçış.",
-          note: "Bildirimleri kapatıp sis izlemek.",
-          scores: { winter: 2, mystery: 2, water: 1 }
-        },
-        {
-          title: "Soft launch edilen kaos.",
-          note: "Her şey yolunda gibi, değil gibi, güzel gibi.",
-          scores: { city: 2, motion: 2, drama: 2 }
-        }
-      ]
-    },
-    {
-      eyebrow: "Mekan seçimi",
-      title: "Bir pazar günü kendini nereye yerleştirirdin?",
-      options: [
-        {
-          title: "Su kenarına, telefonsuz ve az havalı.",
-          note: "Kendimle konuşmam gereken yer orası.",
+          title: "Su kenarında yürümek.",
+          note: "Telefon sessizde, tempo yavaş.",
           scores: { water: 3, mystery: 1, intimacy: 1 }
         },
         {
-          title: "Kalabalık bir bulvara, gözlemci modunda.",
-          note: "Kimseyle buluşmuyorum ama herkes malzemem.",
+          title: "Kalabalık bir semtte dolaşmak.",
+          note: "Bir kahve alıp etrafa bakmak.",
           scores: { city: 3, social: 2, motion: 1 }
         },
         {
-          title: "Bir bahçeye, bitkilerle diplomatik ilişki kurmaya.",
-          note: "Yapraklara karşı sorumluluk hissediyorum.",
+          title: "Evde güzel bir sofra kurmak.",
+          note: "Az kişi, uzun sohbet.",
+          scores: { intimacy: 3, social: 1, sun: 1 }
+        },
+        {
+          title: "Parka ya da bahçeye gitmek.",
+          note: "Biraz yeşil, biraz sessizlik.",
+          scores: { garden: 3, sun: 1, water: 1 }
+        }
+      ]
+    },
+    {
+      eyebrow: "Masa seçimi",
+      title: "Bir yerde oturacaksın. Masayı nasıl seçersin?",
+      options: [
+        {
+          title: "Cam kenarı olsun.",
+          note: "Işık iyi gelsin yeter.",
+          scores: { sun: 3, city: 1 }
+        },
+        {
+          title: "Köşede sakin bir masa.",
+          note: "Sırtımı duvara verince rahat ederim.",
+          scores: { intimacy: 2, mystery: 2, winter: 1 }
+        },
+        {
+          title: "Dışarıdaki masalardan biri.",
+          note: "Gelen geçene bakmak iyi gelir.",
+          scores: { city: 2, social: 2, motion: 1 }
+        },
+        {
+          title: "Manzarası olan yer.",
+          note: "Su, ağaç, gökyüzü; küçük de olsa olur.",
+          scores: { water: 2, garden: 2, mystery: 1 }
+        }
+      ]
+    },
+    {
+      eyebrow: "Kalabalık",
+      title: "Kalabalık bir ortama girdin. Genelde ne yaparsın?",
+      options: [
+        {
+          title: "Önce ortamı bir tartarım.",
+          note: "Kim nerede, hava nasıl; bakarım.",
+          scores: { mystery: 2, social: 1, city: 1 }
+        },
+        {
+          title: "Bir iki kişiyle uzun konuşurum.",
+          note: "Herkese yetişmek bana göre değil.",
+          scores: { intimacy: 3, water: 1, mystery: 1 }
+        },
+        {
+          title: "Herkesle biraz konuşurum.",
+          note: "Kısa kısa, rahat rahat.",
+          scores: { social: 3, sun: 1, motion: 1 }
+        },
+        {
+          title: "Uygun anda dışarı çıkarım.",
+          note: "Beş dakika hava almak iyi gelir.",
+          scores: { winter: 2, mystery: 1, water: 1 }
+        }
+      ]
+    },
+    {
+      eyebrow: "Şehir",
+      title: "Bir şehri gezerken en çok neye takılırsın?",
+      options: [
+        {
+          title: "Işığın binalara düşüşüne.",
+          note: "Aynı sokak başka bir şeye dönüşür.",
+          scores: { sun: 2, city: 2, mystery: 1 }
+        },
+        {
+          title: "İnsanların yürüyüşüne.",
+          note: "Herkesin acelesi ayrı.",
+          scores: { city: 2, social: 2, motion: 2 }
+        },
+        {
+          title: "Parklara, ağaçlara, çiçeklere.",
+          note: "Şehrin nefes aldığı yerler.",
           scores: { garden: 3, sun: 1, intimacy: 1 }
         },
         {
-          title: "Rüzgarlı bir kayalığa, fazla film sahnesi gibi.",
-          note: "İçerideki monolog dışarıya taşacak.",
-          scores: { drama: 3, motion: 1, winter: 1 }
+          title: "Ara sokaklara.",
+          note: "Asıl güzel yerler biraz saklanır.",
+          scores: { mystery: 3, city: 1, winter: 1 }
         }
       ]
     },
     {
-      eyebrow: "Sosyal sinyal",
-      title: "Bir grupta senin gizli görevin nedir?",
+      eyebrow: "Fotoğraf",
+      title: "Fotoğraf çekeceksin. Kadrajda ne olsun?",
       options: [
         {
-          title: "Sessizce tonu ayarlamak.",
-          note: "Ortam regülatörü, insan formunda.",
-          scores: { intimacy: 2, water: 2, social: 1 }
+          title: "Su, cam ya da yansıma.",
+          note: "Bir şey iki kere görünüyorsa güzel.",
+          scores: { water: 3, mystery: 1, intimacy: 1 }
         },
         {
-          title: "En iyi masayı bulmak.",
-          note: "Lojistik aşkın en temiz hali.",
-          scores: { city: 2, social: 2, sun: 1 }
+          title: "Bir yol, köprü ya da hareket.",
+          note: "Fotoğrafın bir yere gitmesini severim.",
+          scores: { motion: 3, city: 1, water: 1 }
         },
         {
-          title: "Birinin söylemediği şeyi fark etmek.",
-          note: "Bazen sezgi, bazen Wi-Fi şifresi gibi.",
-          scores: { mystery: 3, intimacy: 2 }
+          title: "Bir çiçek ya da bahçe detayı.",
+          note: "Küçük şeyler bazen bütün günü taşır.",
+          scores: { garden: 3, intimacy: 1, sun: 1 }
         },
         {
-          title: "Herkesi yürüyüşe çıkarmak.",
-          note: "Durunca düşünüyoruz; yürüyünce çözüyoruz.",
-          scores: { motion: 3, garden: 1, sun: 1 }
+          title: "Bulut, sis, uzaklık.",
+          note: "Net olmayan şeyler daha çok çeker.",
+          scores: { mystery: 2, winter: 2, drama: 1 }
         }
       ]
     },
     {
-      eyebrow: "Mevsimsel benlik",
-      title: "İçine en çok hangi hava durumu yakışıyor?",
+      eyebrow: "Kötü gün",
+      title: "Zor bir günün ardından ne iyi gelir?",
       options: [
         {
-          title: "Kırılmamış bir sabah ışığı.",
-          note: "Çok erken değil, çok geç değil.",
-          scores: { sun: 3, garden: 1, water: 1 }
+          title: "Uzun bir yürüyüş.",
+          note: "Kafa yürürken biraz toparlanır.",
+          scores: { motion: 2, water: 1, winter: 1 }
         },
         {
-          title: "Kar sonrası garip sessizlik.",
-          note: "Beyaz sayfa ama biraz pasif agresif.",
-          scores: { winter: 3, mystery: 1, intimacy: 1 }
+          title: "Sessiz bir ev akşamı.",
+          note: "Işık az, ses az, beklenti az.",
+          scores: { intimacy: 3, winter: 1, mystery: 1 }
         },
         {
-          title: "Rüzgarlı deniz, kontrollü panik.",
-          note: "Duygular dalga boyunda.",
-          scores: { drama: 2, motion: 2, water: 2 }
+          title: "Arkadaşlarla buluşmak.",
+          note: "Konu değişsin, yüzüm açılsın.",
+          scores: { social: 3, sun: 1, city: 1 }
         },
         {
-          title: "Sisli şehir, kahve ve karar erteleme.",
-          note: "Belirsizlik ama iyi giyinmiş.",
-          scores: { city: 2, mystery: 2, winter: 1 }
+          title: "Evi ya da masayı toparlamak.",
+          note: "Dışarısı düzelince içerisi de düzelir.",
+          scores: { garden: 1, winter: 2, sun: 1 }
         }
       ]
     },
     {
-      eyebrow: "Estetik refleks",
-      title: "Bir fotoğraf çekerken en çok neye yenilirsin?",
+      eyebrow: "Tatil",
+      title: "Tek bir yere kaçma hakkın var. Nereye gidersin?",
       options: [
         {
-          title: "Yansımaya.",
-          note: "Gerçeğin kibarca ikiye bölünmesi.",
-          scores: { water: 3, mystery: 1 }
+          title: "Deniz kıyısında küçük bir yere.",
+          note: "Sabah yürüyüşü, akşam sessizlik.",
+          scores: { water: 3, sun: 1, intimacy: 1 }
         },
         {
-          title: "İnsanların farkında olmadan kurduğu kompozisyona.",
-          note: "Tesadüf sandıkları şey bende arşivlenir.",
-          scores: { social: 2, city: 2, motion: 1 }
+          title: "Büyük bir şehre.",
+          note: "Müze, sokak, kafe, biraz kaybolma.",
+          scores: { city: 3, social: 1, motion: 1 }
         },
         {
-          title: "Çiçeğin fazla ciddi durmasına.",
-          note: "Botanikte gurur meselesi.",
-          scores: { garden: 3, sun: 1 }
+          title: "Bahçesi olan sakin bir eve.",
+          note: "Kitap, çay, biraz gölge.",
+          scores: { garden: 3, intimacy: 2, mystery: 1 }
         },
         {
-          title: "Ufuktaki felaket ihtimaline.",
-          note: "Bulutlar bana spoiler verir.",
-          scores: { drama: 3, winter: 1, mystery: 1 }
+          title: "Rüzgarlı, kayalık bir kıyıya.",
+          note: "Deniz biraz sert olsun.",
+          scores: { water: 2, drama: 3, motion: 1, winter: 1 }
+        }
+      ]
+    },
+    {
+      eyebrow: "Küçük eşya",
+      title: "Sebepsizce küçük bir şey alacak olsan hangisi olur?",
+      options: [
+        {
+          title: "Küçük bir defter.",
+          note: "Bir gün lazım olur.",
+          scores: { mystery: 2, intimacy: 2 }
+        },
+        {
+          title: "Güzel kokan bir sabun.",
+          note: "Küçük lüksleri severim.",
+          scores: { garden: 2, sun: 1, intimacy: 1 }
+        },
+        {
+          title: "Üstünde deniz olan bir kartpostal.",
+          note: "Göndermesem de durur.",
+          scores: { water: 2, mystery: 1, drama: 1 }
+        },
+        {
+          title: "Bir şehir haritası.",
+          note: "Kaybolmak için bahane.",
+          scores: { city: 2, motion: 2, social: 1 }
+        }
+      ]
+    },
+    {
+      eyebrow: "Saat",
+      title: "Günün hangi saati sana daha yakın?",
+      options: [
+        {
+          title: "Sabah erken.",
+          note: "Kimse tam uyanmamışken.",
+          scores: { sun: 3, winter: 1, intimacy: 1 }
+        },
+        {
+          title: "Akşamüstü.",
+          note: "Işık yumuşar, her şey biraz değişir.",
+          scores: { sun: 2, drama: 1, garden: 1 }
+        },
+        {
+          title: "Gece.",
+          note: "Ortalık sakinleşince daha iyi düşünürüm.",
+          scores: { mystery: 3, winter: 1, intimacy: 1 }
+        },
+        {
+          title: "Öğlen.",
+          note: "Ev, sokak, herkes biraz canlıyken.",
+          scores: { social: 2, sun: 2, motion: 1 }
         }
       ]
     },
     {
       eyebrow: "Son seçim",
-      title: "Sonuç kartında arkandan hangi cümle kalsın?",
+      title: "Şu an hangisi sana daha yakın?",
       options: [
         {
-          title: "Ben kolay anlaşılmam, ama iyi ışıkta yakalanırım.",
-          note: "Kişisel marka: kısmi bulutlu.",
-          scores: { mystery: 2, sun: 1, intimacy: 2 }
+          title: "Biraz dinginlik istiyorum.",
+          note: "Kafamın sesi azalsın.",
+          scores: { water: 2, intimacy: 2, mystery: 1 }
         },
         {
-          title: "Yaşadığım her şeyi güzel bir yere koymak isterim.",
-          note: "Duygu küratörlüğü.",
-          scores: { garden: 2, water: 1, intimacy: 2 }
+          title: "Biraz hareket istiyorum.",
+          note: "Yer değiştirince ben de değişirim.",
+          scores: { motion: 3, city: 1, social: 1 }
         },
         {
-          title: "Benim huzurum bile biraz hareketlidir.",
-          note: "Durgunlukta bile tren sesi.",
-          scores: { motion: 3, city: 1, water: 1 }
+          title: "Biraz güzellik toparlasın istiyorum.",
+          note: "Küçük bir şey bile yeter.",
+          scores: { garden: 2, sun: 2, intimacy: 1 }
         },
         {
-          title: "Bazen sadece çok iyi bir gün batımıyım.",
-          note: "Abartılı ama doğru.",
-          scores: { sun: 2, drama: 2, social: 1 }
+          title: "Biraz dramatik ama iyi hissetmek istiyorum.",
+          note: "Hava değişsin, ben de açılırım.",
+          scores: { drama: 3, sun: 1, mystery: 1 }
         }
       ]
     }
