@@ -24,9 +24,6 @@
   const resultTitle = document.getElementById("resultTitle");
   const resultMeta = document.getElementById("resultMeta");
   const resultDescription = document.getElementById("resultDescription");
-  const resultAstro = document.getElementById("resultAstro");
-  const resultPhilosophy = document.getElementById("resultPhilosophy");
-  const resultMovement = document.getElementById("resultMovement");
   const resultOneLiner = document.getElementById("resultOneLiner");
   const sourceLink = document.getElementById("sourceLink");
   const restartButton = document.getElementById("restartButton");
@@ -172,10 +169,7 @@
 
     resultTitle.textContent = result.title;
     resultMeta.textContent = `Claude Monet · ${result.year} · ${result.mood}`;
-    resultDescription.textContent = result.description;
-    resultAstro.textContent = result.astro;
-    resultPhilosophy.textContent = result.philosophy;
-    resultMovement.textContent = result.movement;
+    resultDescription.textContent = buildResultDescription(result);
     resultOneLiner.textContent = `Sonucun ${result.title}. Bunu paylaşmak istersen kartı indirebilir ya da doğrudan Twitter'a gönderebilirsin.`;
     sourceLink.href = getCommonsCategoryUrl(result.category);
 
@@ -199,6 +193,87 @@
       linear-gradient(305deg, ${colors[2] || colors[0]} 0%, transparent 42%),
       linear-gradient(20deg, ${colors[0]}, ${colors[3] || colors[0]})
     `;
+  }
+
+  function buildResultDescription(result) {
+    const primary = result.traits[0];
+    const secondary = result.traits[1] || result.traits[0];
+    const tertiary = result.traits[2] || result.traits[1] || result.traits[0];
+
+    const openings = {
+      sun:
+        "Sende insanın içini açan, ortamı çok zorlamadan aydınlatan bir taraf var.",
+      water:
+        "Sen aceleyle karar veren biri gibi durmuyorsun; önce ortamın sesini ve kendi içindeki dalgayı dinliyorsun.",
+      city:
+        "Sen kalabalıkların, sokakların ve küçük tesadüflerin içinden kendine malzeme çıkaran birisin.",
+      garden:
+        "Sende güzelliği büyütmek, küçük şeylere bakmak ve onları sakin sakin çoğaltmak gibi bir taraf var.",
+      motion:
+        "Sen aynı yerde çok uzun kalınca içi daralan, yer değiştirince kendine gelen insanlardansın.",
+      drama:
+        "Sende duyguyu saklamayan ama onu dağınık bırakmayan, biraz sahneli bir taraf var.",
+      intimacy:
+        "Sen herkese aynı mesafeden yaklaşmayan, yakınlığı seçerek ve dikkatle kuran birisin.",
+      winter:
+        "Sende sessizliği seven, fazlalıklar azalınca daha iyi düşünen bir taraf var.",
+      social:
+        "Sen insanlarla kurulan küçük temasları, bakışları ve masadaki havayı çabuk yakalıyorsun.",
+      mystery:
+        "Sende ilk bakışta hemen ele geçmeyen, biraz bekleyince açılan bir hava var."
+    };
+
+    const supports = {
+      sun:
+        "Bu yüzden ışık, açıklık ve iyi bir zamanlama senin sonucunda önemli bir yer tutuyor.",
+      water:
+        "Suya, yansımaya ya da sakin bir mesafeye yakın durman da bundan.",
+      city:
+        "Şehir hissi burada sadece kalabalık değil; hareket, gözlem ve küçük ayrıntılar demek.",
+      garden:
+        "Bahçe tarafı ise sende bakım, sabır ve göze iyi gelen şeylerle kendini belli ediyor.",
+      motion:
+        "Hareket duygusu, senin için kaçmak değil; kafanın yerini değiştirmek gibi.",
+      drama:
+        "Dramatik tarafın abartıdan çok, duygunun biraz daha görünür olmasını seviyor.",
+      intimacy:
+        "Yakınlık senin sonucunda kalabalıktan çok seçilmiş birkaç kişiyi ve güvenli alanı anlatıyor.",
+      winter:
+        "Kış ve sessizlik hissi de burada içe çekilmekten çok toparlanmak anlamına geliyor.",
+      social:
+        "Sosyal tarafın, herkesle aynı anda konuşmaktan çok ortamın ritmini anlamaya yakın.",
+      mystery:
+        "Belirsizliğe yakın durman karışık olduğun için değil; her şeyin hemen açıklanmak zorunda olmadığını bildiğin için."
+    };
+
+    const closings = {
+      sun:
+        "Bu tablo sana, iyi ışıkta daha da belirginleşen o sıcak ve canlı halin yüzünden yakışıyor.",
+      water:
+        "Bu tablo sana, duygularını büyütmeden ama hafife de almadan taşıdığın için yakışıyor.",
+      city:
+        "Bu tablo sana, dışarıdaki hayatı izlerken kendini de daha iyi duyduğun için yakışıyor.",
+      garden:
+        "Bu tablo sana, güzelliği bir anda değil, küçük küçük biriktiren tarafın yüzünden yakışıyor.",
+      motion:
+        "Bu tablo sana, durgunluğun içinde bile bir sonraki adımı düşündüğün için yakışıyor.",
+      drama:
+        "Bu tablo sana, bazen havanın değişmesine ihtiyaç duyan o güçlü tarafın yüzünden yakışıyor.",
+      intimacy:
+        "Bu tablo sana, kendini herkese değil ama doğru yere gayet güzel açtığın için yakışıyor.",
+      winter:
+        "Bu tablo sana, sessiz kaldığında kaybolmadığın; aksine daha netleştiğin için yakışıyor.",
+      social:
+        "Bu tablo sana, insanlarla arandaki mesafeyi iyi ayarladığın için yakışıyor.",
+      mystery:
+        "Bu tablo sana, ilk anda değil, bakıldıkça daha çok şey söyleyen tarafın yüzünden yakışıyor."
+    };
+
+    const supportParts = [supports[secondary], supports[tertiary]].filter(
+      (part, index, parts) => part && parts.indexOf(part) === index
+    );
+
+    return `${openings[primary]} ${supportParts.join(" ")} Sonuç olarak ${result.title} sana düz bir etiket gibi değil, daha çok tanıdık bir ruh hali gibi geliyor. ${closings[primary]}`;
   }
 
   function getCommonsCategoryUrl(category) {
@@ -351,22 +426,16 @@
     ctx.font = "800 34px system-ui, sans-serif";
     ctx.fillText("Senin Monet tablon", 72, 830);
 
-    ctx.font = "700 84px Georgia, serif";
-    const titleY = wrapText(ctx, result.title, 72, 930, 936, 90, 2);
+    ctx.font = "700 72px Georgia, serif";
+    const titleY = wrapText(ctx, result.title, 72, 900, 936, 78, 2);
 
     ctx.fillStyle = "#6a6258";
-    ctx.font = "800 30px system-ui, sans-serif";
-    ctx.fillText(`Claude Monet · ${result.year}`, 72, titleY + 18);
+    ctx.font = "800 28px system-ui, sans-serif";
+    ctx.fillText(`Claude Monet · ${result.year}`, 72, titleY + 10);
 
     ctx.fillStyle = "#3d3934";
-    ctx.font = "500 34px system-ui, sans-serif";
-    wrapText(ctx, result.description, 72, titleY + 88, 936, 46, 4);
-
-    ctx.fillStyle = "#25221f";
-    ctx.font = "800 30px system-ui, sans-serif";
-    ctx.fillText("Astrolojik hava", 72, 1210);
-    ctx.font = "500 29px system-ui, sans-serif";
-    wrapText(ctx, result.astro, 72, 1252, 780, 38, 2);
+    ctx.font = "500 30px system-ui, sans-serif";
+    wrapText(ctx, buildResultDescription(result), 72, titleY + 66, 936, 41, 6);
 
     ctx.fillStyle = "#6a6258";
     ctx.font = "700 23px system-ui, sans-serif";

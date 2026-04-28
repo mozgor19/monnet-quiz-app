@@ -6,8 +6,8 @@ Mobil öncelikli, statik bir quiz web app. Kullanıcı 10 soruya cevap verir; uy
 
 - `index.html`: Sayfa yapısı, quiz ekranı ve sonuç ekranı.
 - `styles.css`: Mobil öncelikli arayüz, responsive layout ve sonuç kartı görünümü.
-- `data.js`: 10 soru, cevap skorları, 72 Monet sonucu ve her sonucun metinleri.
-- `app.js`: Quiz akışı, sonuç algoritması, Wikimedia Commons görsel çekme, PNG indirme ve Twitter paylaşımı.
+- `data.js`: 10 soru, cevap skorları, 72 Monet sonucu ve tablo verileri.
+- `app.js`: Quiz akışı, sonuç algoritması, doğal sonuç açıklaması üretme, Wikimedia Commons görsel çekme, PNG indirme ve Twitter paylaşımı.
 - `favicon.svg`: Küçük Monet esintili favicon.
 - `vercel.json`: Statik Vercel ayarları.
 - `.vercelignore`: Vercel'e gereksiz yerel dosyaların gitmesini engeller.

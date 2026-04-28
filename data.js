@@ -1270,7 +1270,7 @@ window.MONET_QUIZ_DATA = {
     },
     {
       id: "houses-falaise-fog",
-      title: "Maisons a Falaise, brouillard",
+      title: "Maisons à Falaise, brouillard",
       year: "1885",
       category: "Maisons à Falaise, brouillard by Claude Monet",
       traits: ["city", "mystery", "winter", "water"],
@@ -1280,7 +1280,7 @@ window.MONET_QUIZ_DATA = {
       philosophy: "evsizlik hissi; mekan bazen soru sorar",
       movement: "sisli yerlesim peyzaji",
       description:
-        "Senin içinde adresi belli ama havası belirsiz bir yer var. Bu seni karışık değil, çok katmanli yapıyor."
+        "Sende şehrin biraz kenarında kalmayı seven, ama oradan hayata çok dikkatli bakan bir taraf var. Her şeyi hemen anlatmıyorsun; bu da seni uzak değil, merak uyandıran biri yapıyor."
     }
   ]
 };
