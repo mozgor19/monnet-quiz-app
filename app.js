@@ -332,26 +332,58 @@
     ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
   }
 
-  function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+  function getWrappedLines(ctx, text, maxWidth) {
     const words = text.split(" ");
     let line = "";
-    let lines = 0;
+    const lines = [];
+
     for (let i = 0; i < words.length; i += 1) {
       const test = `${line}${words[i]} `;
       if (ctx.measureText(test).width > maxWidth && i > 0) {
-        ctx.fillText(line.trim(), x, y);
+        lines.push(line.trim());
         line = `${words[i]} `;
-        y += lineHeight;
-        lines += 1;
-        if (maxLines && lines >= maxLines - 1) break;
       } else {
         line = test;
       }
     }
-    if (!maxLines || lines < maxLines) {
-      ctx.fillText(line.trim(), x, y);
+    if (line.trim()) {
+      lines.push(line.trim());
     }
-    return y + lineHeight;
+    return lines;
+  }
+
+  function drawTextLines(ctx, lines, x, y, lineHeight) {
+    lines.forEach((line, index) => {
+      ctx.fillText(line, x, y + index * lineHeight);
+    });
+    return y + lines.length * lineHeight;
+  }
+
+  function fitAndDrawText(ctx, text, x, y, maxWidth, maxHeight, options) {
+    const {
+      maxSize,
+      minSize,
+      weight,
+      family,
+      color,
+      lineHeightFactor = 1.25
+    } = options;
+
+    let size = maxSize;
+    let lineHeight = Math.round(size * lineHeightFactor);
+    let lines = [];
+
+    while (size >= minSize) {
+      ctx.font = `${weight} ${size}px ${family}`;
+      lineHeight = Math.round(size * lineHeightFactor);
+      lines = getWrappedLines(ctx, text, maxWidth);
+      if (lines.length * lineHeight <= maxHeight || size === minSize) break;
+      size -= 1;
+    }
+
+    ctx.fillStyle = color;
+    ctx.font = `${weight} ${size}px ${family}`;
+    return drawTextLines(ctx, lines, x, y, lineHeight);
   }
 
   function loadCanvasImage(url) {
@@ -395,44 +427,71 @@
     ctx.fill();
     ctx.globalAlpha = 1;
 
-    drawRoundedRect(ctx, 62, 62, 956, 688, 34);
+    const imageX = 62;
+    const imageY = 62;
+    const imageWidth = 956;
+    const imageHeight = 600;
+    const textX = 72;
+    const textWidth = 936;
+    const footerY = 1314;
+
+    drawRoundedRect(ctx, imageX, imageY, imageWidth, imageHeight, 34);
     ctx.save();
     ctx.clip();
     try {
       const image = await loadCanvasImage(state.imageUrl);
-      drawCoverImage(ctx, image, 62, 62, 956, 688);
+      drawCoverImage(ctx, image, imageX, imageY, imageWidth, imageHeight);
     } catch (_error) {
-      const fallback = ctx.createLinearGradient(62, 62, 1018, 750);
+      const fallback = ctx.createLinearGradient(imageX, imageY, imageX + imageWidth, imageY + imageHeight);
       fallback.addColorStop(0, palette[0] || "#5a8a87");
       fallback.addColorStop(0.5, palette[1] || "#6f78a8");
       fallback.addColorStop(1, palette[2] || "#e0a14a");
       ctx.fillStyle = fallback;
-      ctx.fillRect(62, 62, 956, 688);
+      ctx.fillRect(imageX, imageY, imageWidth, imageHeight);
     }
     ctx.restore();
 
     ctx.fillStyle = "#25221f";
     ctx.font = "800 34px system-ui, sans-serif";
-    ctx.fillText("Hangi Monet tablosusun?", 72, 820);
+    ctx.fillText("Hangi Monet tablosusun?", textX, 735);
 
     ctx.fillStyle = "#6a6258";
     ctx.font = "800 26px system-ui, sans-serif";
-    ctx.fillText("Senin Monet tablon", 72, 860);
+    ctx.fillText("Senin Monet tablon", textX, 775);
 
-    ctx.font = "700 64px Georgia, serif";
-    const titleY = wrapText(ctx, result.title, 72, 920, 936, 70, 2);
+    const titleEndY = fitAndDrawText(ctx, result.title, textX, 835, textWidth, 170, {
+      maxSize: 64,
+      minSize: 48,
+      weight: "700",
+      family: "Georgia, serif",
+      color: "#25221f",
+      lineHeightFactor: 1.1
+    });
 
     ctx.fillStyle = "#6a6258";
     ctx.font = "800 28px system-ui, sans-serif";
-    ctx.fillText(`Claude Monet · ${result.year}`, 72, titleY + 8);
+    ctx.fillText(`Claude Monet · ${result.year}`, textX, titleEndY + 10);
 
-    ctx.fillStyle = "#3d3934";
-    ctx.font = "500 27px system-ui, sans-serif";
-    wrapText(ctx, buildResultDescription(result), 72, titleY + 58, 936, 36, 4);
+    fitAndDrawText(
+      ctx,
+      buildResultDescription(result),
+      textX,
+      titleEndY + 60,
+      textWidth,
+      footerY - (titleEndY + 106),
+      {
+        maxSize: 27,
+        minSize: 20,
+        weight: "500",
+        family: "system-ui, sans-serif",
+        color: "#3d3934",
+        lineHeightFactor: 1.32
+      }
+    );
 
     ctx.fillStyle = "#6a6258";
     ctx.font = "700 23px system-ui, sans-serif";
-    ctx.fillText(`created by ${creator}`, 72, 1314);
+    ctx.fillText(`created by ${creator}`, textX, footerY);
 
     return true;
   }
