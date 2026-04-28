@@ -442,31 +442,6 @@
     return `hangi-monet-tablosusun-${safeTitle}.png`;
   }
 
-  function canvasToBlob() {
-    return new Promise((resolve, reject) => {
-      try {
-        canvas.toBlob((blob) => {
-          if (blob) {
-            resolve(blob);
-          } else {
-            reject(new Error("Result card could not be created"));
-          }
-        }, "image/png");
-      } catch (error) {
-        reject(error);
-      }
-    });
-  }
-
-  async function createResultCardFile() {
-    const result = state.result;
-    if (!result) return null;
-    const drawn = await drawResultCard();
-    if (!drawn) return null;
-    const blob = await canvasToBlob();
-    return new File([blob], getResultFilename(result), { type: "image/png" });
-  }
-
   async function downloadResultCard() {
     const result = state.result;
     if (!result) return;
@@ -480,34 +455,11 @@
     link.click();
   }
 
-  async function tweetResult() {
+  function tweetResult() {
     if (!state.result) return;
     const url = new URL(window.location.href);
     url.searchParams.set("result", state.result.id);
     const text = `Ben "${state.result.title}" çıktım. Sen hangi Monet tablosusun? ${creator}`;
-
-    try {
-      if (!navigator.share) throw new Error("Native share is not supported");
-
-      const file = await createResultCardFile();
-      const shareData = {
-        files: file ? [file] : [],
-        text,
-        url: url.toString()
-      };
-
-      const canShareFile =
-        file &&
-        navigator.share &&
-        (!navigator.canShare || navigator.canShare({ files: [file] }));
-
-      if (canShareFile) {
-        await navigator.share(shareData);
-        return;
-      }
-    } catch (error) {
-      if (error && error.name === "AbortError") return;
-    }
 
     const intent = new URL("https://twitter.com/intent/tweet");
     intent.searchParams.set("text", text);

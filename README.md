@@ -59,7 +59,7 @@ Görsel çekilemezse uygulama kırılmaz. Sonuç kartı, tablonun renk paletine 
 ## Paylaşım ve İndirme
 
 - `Görseli indir`: Sonucu `1080x1350` boyutunda PNG kartına çizer ve indirir.
-- `Twitter'da paylaş`: Mobil tarayıcı destekliyorsa PNG sonuç kartını paylaşım penceresine dosya olarak verir; destek yoksa Twitter intent penceresiyle sonuç başlığını ve sayfa URL'sini paylaşır.
+- `Twitter'da paylaş`: Twitter intent penceresi açar, sonuç başlığını ve sayfa URL'sini paylaşır.
 - Paylaşılan URL'de `?result=...` parametresi bulunur. Bu parametreyle gelen kullanıcı quiz çözmeden doğrudan aynı sonucu görebilir.
 
 ## Gizlilik
