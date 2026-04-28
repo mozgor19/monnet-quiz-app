@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hangi Monet Tablosusun?</title>
+    <meta
+      name="description"
+      content="10 soruda astrolojik, felsefi ve biraz da alakasız bir Monet tablosuna dönüş."
+    />
+    <meta name="theme-color" content="#f7efe5" />
+    <meta property="og:title" content="Hangi Monet Tablosusun?" />
+    <meta
+      property="og:description"
+      content="10 soruda sana en yakın Claude Monet tablosunu bul."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar" aria-label="Site başlığı">
+        <a class="brand" href="./" aria-label="Teste baştan başla">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Hangi Monet tablosusun?</span>
+        </a>
+        <a class="creator-link" href="https://twitter.com/mozgor19" target="_blank" rel="noreferrer">
+          @mozgor19
+        </a>
+      </header>
+
+      <section id="quizView" class="quiz-view" aria-live="polite">
+        <div class="quiz-copy">
+          <p class="kicker">10 soru · 60+ olası sonuç · biraz astroloji, biraz sis</p>
+          <h1>Monet ruh haritanı çıkarıyoruz.</h1>
+          <p class="intro">
+            Cevaplarına göre sana bir Monet tablosu seçeceğiz. Mantıklı sorular da var,
+            kapının ruh hali gibi konular da.
+          </p>
+        </div>
+
+        <article class="question-panel">
+          <div class="progress-row">
+            <span id="questionCounter">1 / 10</span>
+            <span id="answeredCounter">0 cevap</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="progressFill"></span>
+          </div>
+
+          <p id="questionEyebrow" class="question-eyebrow"></p>
+          <h2 id="questionTitle" class="question-title"></h2>
+          <div id="options" class="options" role="list"></div>
+
+          <div class="nav-row">
+            <button id="backButton" class="ghost-button" type="button">Geri</button>
+            <button id="nextButton" class="primary-button" type="button">Devam</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="resultView" class="result-view" hidden aria-live="polite">
+        <div class="result-grid">
+          <article id="shareCard" class="result-card">
+            <div class="painting-frame">
+              <div id="imageFallback" class="image-fallback"></div>
+              <img id="paintingImage" alt="" crossorigin="anonymous" />
+            </div>
+
+            <div class="result-content">
+              <p class="kicker">Senin Monet tablon</p>
+              <h1 id="resultTitle"></h1>
+              <p id="resultMeta" class="result-meta"></p>
+              <p id="resultDescription" class="result-description"></p>
+
+              <div class="insight-list">
+                <div>
+                  <span>Astrolojik hava</span>
+                  <strong id="resultAstro"></strong>
+                </div>
+                <div>
+                  <span>Felsefi damar</span>
+                  <strong id="resultPhilosophy"></strong>
+                </div>
+                <div>
+                  <span>Sanatsal akraba</span>
+                  <strong id="resultMovement"></strong>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <aside class="result-actions" aria-label="Sonuç işlemleri">
+            <p id="resultOneLiner" class="result-one-liner"></p>
+            <div class="action-buttons">
+              <button id="downloadButton" class="primary-button" type="button">Görseli indir</button>
+              <button id="tweetButton" class="dark-button" type="button">Twitter'da paylaş</button>
+              <button id="restartButton" class="ghost-button" type="button">Tekrar çöz</button>
+            </div>
+            <a id="sourceLink" class="source-link" href="#" target="_blank" rel="noreferrer">
+              Görsel kaynağı: Wikimedia Commons
+            </a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <canvas id="downloadCanvas" width="1080" height="1350" hidden></canvas>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
