@@ -409,20 +409,75 @@ button {
 }
 
 @media (min-width: 980px) {
+  .app-shell {
+    width: min(1280px, 100%);
+    padding-inline: 32px;
+  }
+
+  .result-view {
+    padding-top: 8px;
+  }
+
+  .result-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
   .result-card {
     display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.78fr);
+    grid-template-columns: minmax(340px, 0.92fr) minmax(430px, 1fr);
+    align-items: stretch;
   }
 
   .painting-frame {
-    min-height: 640px;
+    height: clamp(500px, 58vh, 620px);
+    min-height: 0;
     aspect-ratio: auto;
   }
 
   .result-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 34px;
+    justify-content: flex-start;
+    padding: 32px 36px;
+  }
+
+  .result-content h1 {
+    max-width: 100%;
+    font-size: clamp(3rem, 4vw, 4.35rem);
+    line-height: 0.94;
+    overflow-wrap: normal;
+  }
+
+  .result-meta {
+    margin-top: 16px;
+    font-size: 0.96rem;
+    line-height: 1.24;
+  }
+
+  .result-description {
+    margin-top: 18px;
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  .result-actions {
+    position: static;
+    padding: 18px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .result-grid {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    max-width: none;
+    margin: 0;
+  }
+
+  .result-actions {
+    position: sticky;
+    top: 24px;
   }
 }

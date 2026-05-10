@@ -2,6 +2,7 @@
   const data = window.MONET_QUIZ_DATA;
   const dims = data.dimensions;
   const creator = "@mozgor19";
+  const shareVersion = "2";
   const state = {
     index: 0,
     answers: new Array(data.questions.length).fill(null),
@@ -503,7 +504,9 @@
 
   function getShareUrl(result) {
     const base = window.location.origin === "null" ? window.location.href : window.location.origin;
-    return new URL(`/share/${encodeURIComponent(result.id)}`, base);
+    const url = new URL(`/share/${encodeURIComponent(result.id)}`, base);
+    url.searchParams.set("v", shareVersion);
+    return url;
   }
 
   async function downloadResultCard() {
@@ -522,7 +525,7 @@
   function tweetResult() {
     if (!state.result) return;
     const url = getShareUrl(state.result);
-    const text = `Ben "${state.result.title}" çıktım. Sen hangi Monet tablosusun? ${creator}`;
+    const text = `Ben "${state.result.title}" çıktım. Sen hangi Monet tablosusun?`;
 
     const intent = new URL("https://twitter.com/intent/tweet");
     intent.searchParams.set("text", text);

@@ -9,7 +9,9 @@ Mobil öncelikli bir quiz web app. Kullanıcı 10 soruya cevap verir; uygulama c
 - `data.js`: 10 soru, cevap skorları, 72 Monet sonucu ve tablo verileri.
 - `app.js`: Quiz akışı, sonuç algoritması, doğal sonuç açıklaması üretme, Wikimedia Commons görsel çekme, PNG indirme ve Twitter paylaşımı.
 - `api/share.mjs`: Sonuç paylaşım URL'leri için crawler'ların okuyacağı Open Graph/Twitter meta etiketlerini üretir.
-- `api/og.mjs`: Her sonuca özel 1200x630 sosyal paylaşım PNG'sini üretir.
+- `api/og.mjs`: Eski dinamik sosyal görsel URL'lerini statik görsellere yönlendirir.
+- `scripts/generate-og-images.mjs`: Her sonuca özel statik sosyal paylaşım JPG'lerini üretir.
+- `og/`: Sonuç özel 1200x630 sosyal paylaşım görselleri.
 - `favicon.svg`: Küçük Monet esintili favicon.
 - `social-preview.png`: X/Twitter ve diğer sosyal platformlarda link önizlemesi için kullanılan 1200x630 görsel.
 - `vercel.json`: Statik Vercel ayarları.
@@ -64,7 +66,7 @@ Görsel çekilemezse uygulama kırılmaz. Sonuç kartı, tablonun renk paletine 
 - `Görseli indir`: Sonucu `1080x1350` boyutunda PNG kartına çizer ve indirir.
 - `Twitter'da paylaş`: Twitter intent penceresi açar, sonuç başlığını ve `/share/<sonuc-id>` URL'sini paylaşır.
 - Sonuç ekranı `?result=...` parametresiyle açılabilir; kullanıcı quiz çözmeden doğrudan aynı sonucu görebilir.
-- `/share/<sonuc-id>` sayfası sosyal platformlar için sonuç özel thumbnail döndürür; normal ziyaretçileri aynı sonucun `?result=...` ekranına yönlendirir.
+- `/share/<sonuc-id>` sayfası sosyal platformlar için `og/<sonuc-id>.jpg` thumbnail'ını döndürür; normal ziyaretçileri aynı sonucun `?result=...` ekranına yönlendirir.
 
 ## Gizlilik
 

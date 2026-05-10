@@ -4,7 +4,9 @@ import {
   escapeHtml,
   getBaseUrlFromNodeRequest,
   getResultById,
-  getShareLine
+  getShareLine,
+  getVersionedStaticOgImageUrl,
+  shareVersion
 } from "../lib/share-utils.mjs";
 
 export default function handler(request, response) {
@@ -13,10 +15,10 @@ export default function handler(request, response) {
   const result = getResultById(requestUrl.searchParams.get("result"));
   const resultPath = result ? `/?result=${encodeURIComponent(result.id)}` : "/";
   const resultUrl = new URL(resultPath, baseUrl).toString();
-  const shareUrl = result ? new URL(`/share/${encodeURIComponent(result.id)}`, baseUrl).toString() : baseUrl;
+  const shareUrl = result ? new URL(`/share/${encodeURIComponent(result.id)}?v=${shareVersion}`, baseUrl).toString() : baseUrl;
   const imageUrl = result
-    ? new URL(`/api/og?result=${encodeURIComponent(result.id)}`, baseUrl).toString()
-    : new URL("/social-preview.png?v=1", defaultBaseUrl).toString();
+    ? getVersionedStaticOgImageUrl(result, baseUrl)
+    : new URL(`/social-preview.png?v=${shareVersion}`, defaultBaseUrl).toString();
   const title = result
     ? `Ben "${result.title}" çıktım | Hangi Monet Tablosusun?`
     : "Hangi Monet Tablosusun?";
@@ -43,7 +45,8 @@ export default function handler(request, response) {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Hangi Monet Tablosusun?" />
     <meta property="og:image" content="${escapeHtml(imageUrl)}" />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:secure_url" content="${escapeHtml(imageUrl)}" />
+    <meta property="og:image:type" content="${result ? "image/jpeg" : "image/png"}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />
