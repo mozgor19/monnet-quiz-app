@@ -1,4 +1,4 @@
-window.MONET_QUIZ_DATA = {
+const MONET_QUIZ_DATA = {
   dimensions: [
     "sun",
     "water",
@@ -1284,3 +1284,11 @@ window.MONET_QUIZ_DATA = {
     }
   ]
 };
+
+if (typeof window !== "undefined") {
+  window.MONET_QUIZ_DATA = MONET_QUIZ_DATA;
+}
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = MONET_QUIZ_DATA;
+}

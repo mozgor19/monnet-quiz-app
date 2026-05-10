@@ -501,6 +501,11 @@
     return `hangi-monet-tablosusun-${safeTitle}.png`;
   }
 
+  function getShareUrl(result) {
+    const base = window.location.origin === "null" ? window.location.href : window.location.origin;
+    return new URL(`/share/${encodeURIComponent(result.id)}`, base);
+  }
+
   async function downloadResultCard() {
     const result = state.result;
     if (!result) return;
@@ -516,8 +521,7 @@
 
   function tweetResult() {
     if (!state.result) return;
-    const url = new URL(window.location.href);
-    url.searchParams.set("result", state.result.id);
+    const url = getShareUrl(state.result);
     const text = `Ben "${state.result.title}" çıktım. Sen hangi Monet tablosusun? ${creator}`;
 
     const intent = new URL("https://twitter.com/intent/tweet");

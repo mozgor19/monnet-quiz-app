@@ -1,6 +1,6 @@
 # Hangi Monet Tablosusun?
 
-Mobil öncelikli, statik bir quiz web app. Kullanıcı 10 soruya cevap verir; uygulama cevaplardan bir kişilik vektörü çıkarır ve bunu 72 Claude Monet tablosunun vektörleriyle karşılaştırarak en yakın sonucu seçer.
+Mobil öncelikli bir quiz web app. Kullanıcı 10 soruya cevap verir; uygulama cevaplardan bir kişilik vektörü çıkarır ve bunu 72 Claude Monet tablosunun vektörleriyle karşılaştırarak en yakın sonucu seçer. Sonuç paylaşım thumbnail'ları Vercel Functions ile üretilir.
 
 ## Dosyalar
 
@@ -8,6 +8,8 @@ Mobil öncelikli, statik bir quiz web app. Kullanıcı 10 soruya cevap verir; uy
 - `styles.css`: Mobil öncelikli arayüz, responsive layout ve sonuç kartı görünümü.
 - `data.js`: 10 soru, cevap skorları, 72 Monet sonucu ve tablo verileri.
 - `app.js`: Quiz akışı, sonuç algoritması, doğal sonuç açıklaması üretme, Wikimedia Commons görsel çekme, PNG indirme ve Twitter paylaşımı.
+- `api/share.mjs`: Sonuç paylaşım URL'leri için crawler'ların okuyacağı Open Graph/Twitter meta etiketlerini üretir.
+- `api/og.mjs`: Her sonuca özel 1200x630 sosyal paylaşım PNG'sini üretir.
 - `favicon.svg`: Küçük Monet esintili favicon.
 - `social-preview.png`: X/Twitter ve diğer sosyal platformlarda link önizlemesi için kullanılan 1200x630 görsel.
 - `vercel.json`: Statik Vercel ayarları.
@@ -60,8 +62,9 @@ Görsel çekilemezse uygulama kırılmaz. Sonuç kartı, tablonun renk paletine 
 ## Paylaşım ve İndirme
 
 - `Görseli indir`: Sonucu `1080x1350` boyutunda PNG kartına çizer ve indirir.
-- `Twitter'da paylaş`: Twitter intent penceresi açar, sonuç başlığını ve sayfa URL'sini paylaşır.
-- Paylaşılan URL'de `?result=...` parametresi bulunur. Bu parametreyle gelen kullanıcı quiz çözmeden doğrudan aynı sonucu görebilir.
+- `Twitter'da paylaş`: Twitter intent penceresi açar, sonuç başlığını ve `/share/<sonuc-id>` URL'sini paylaşır.
+- Sonuç ekranı `?result=...` parametresiyle açılabilir; kullanıcı quiz çözmeden doğrudan aynı sonucu görebilir.
+- `/share/<sonuc-id>` sayfası sosyal platformlar için sonuç özel thumbnail döndürür; normal ziyaretçileri aynı sonucun `?result=...` ekranına yönlendirir.
 
 ## Gizlilik
 

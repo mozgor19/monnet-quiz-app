@@ -1,4 +1,10 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/share/:result",
+      "destination": "/api/share?result=:result"
+    }
+  ]
 }
